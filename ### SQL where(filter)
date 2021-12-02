@@ -1,0 +1,9 @@
+### SQL number of persons between types 
+SELECT
+  DISTINCT rideable_type, member_casual, count(member_casual) as number_of_riders 
+FROM
+  `speedy-web-331622.Cyclistic_bike_share.202011-divvy-tripdata`
+GROUP BY
+rideable_type, member_casual
+order by 
+rideable_type, member_casual
