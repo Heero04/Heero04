@@ -1,0 +1,7 @@
+### Device, Clicks
+SELECT
+  DISTINCT Tactic, Device, sum(Clicks) AS Total_Clicks 
+FROM
+  `speedy-web-331622.Interview_Data.Interview_Data`
+GROUP BY  
+Tactic, Device
