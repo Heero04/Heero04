@@ -1,0 +1,23 @@
+def compare_and_diff_primary_keys(df1, df2, key_column):
+    """
+    Compare the primary keys in two dataframes and return the differences.
+
+    Parameters:
+    df1 (DataFrame): First dataframe
+    df2 (DataFrame): Second dataframe
+    key_column (str): The name of the primary key column
+
+    Returns:
+    tuple: A tuple containing two sets. The first set contains keys present in df1 but not in df2.
+           The second set contains keys present in df2 but not in df1.
+    """
+
+    # Get unique keys from both dataframes
+    keys_df1 = set(df1[key_column].unique())
+    keys_df2 = set(df2[key_column].unique())
+
+    # Find the differences
+    diff_df1_df2 = keys_df1 - keys_df2
+    diff_df2_df1 = keys_df2 - keys_df1
+
+    return diff_df1_df2, diff_df2_df1
