@@ -21,3 +21,18 @@ def compare_and_diff_primary_keys(df1, df2, key_column):
     diff_df2_df1 = keys_df2 - keys_df1
 
     return diff_df1_df2, diff_df2_df1
+
+
+
+for s in strings:
+    # Split the string into individual numbers
+    numbers = s.split(', ')
+    
+    # Add parentheses around each number
+    numbers_with_parentheses = [f'({number})' for number in numbers]
+    
+    # Join the numbers back into a string
+    s_with_parentheses = ', '.join(numbers_with_parentheses)
+    
+    # Print the string with quotation marks around it
+    print(f'\'{s_with_parentheses}\',')
