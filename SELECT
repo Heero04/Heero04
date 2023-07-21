@@ -1,38 +1,22 @@
-WITH OTIF_change_reason_code AS (
-SELECT 
-    zrc.zzspras AS pk_IDK,
-    zrd.zzchangenr AS pk_IRDK,
-    zrd.zzvkorg AS sales_organization_code,
-    tvkot.vtext AS sales_organization_desc,
-    kna1.land1 AS location_country_id,
-    kna1.NAME1 AS location_name,
-    vbap.ERDAT as date_record_created,
-    zrd.zzusername AS User_ID,
-    zrd.zzfname AS ACTIVITY_EN,
-    zrd.zzkunnr AS Customer_Number,
-    zrd.zzname1 AS Customer_Name,
-    zrd.zzreasoncd AS Change_Reason_Code,
-    zrc.zzreason AS Change_Reason_Desc,
-    zrd.zzobjectid AS sales_order_number,
-    zrd.zzvalue_old AS Changed_From,
-    zrd.zzvalue_new as Changed_To,
-    vbap.KBMENG as sales_order_line_item_net_quantity,
-    vbap.KWMENG as sales_order_line_item_quantity
-FROM prd_product_tc2.zcoom_reson_data zrd
-LEFT JOIN prd_product_tc2.vbep vbep ON zrd.zzobjectid = vbep.vbeln
-LEFT JOIN prd_product_tc2.vbap vbap ON zrd.zzobjectid = vbap.vbeln
-LEFT JOIN prd_product_tc2.kna1 kna1 ON zrd.zzkunnr = kna1.kunnr
-LEFT JOIN prd_product_tc2.tvkot tvkot ON zrd.zzvkorg = tvkot.vkorg AND tvkot.spras = 'E'
-LEFT JOIN prd_product_tc2.zoom_reason_code zrc ON  zrc.zzreasoncd = zrd.zzreasoncd
-)
+import pandas as pd
 
-SELECT
-count(*)
-FROM OTIF_change_reason_code
-WHERE date_record_created > DATE_SUB(NOW(), INTERVAL 36 MONTH)
-GROUP BY
-pk_IDK,
-pk_IRDK,
-sales_order_number,
-sales_organization_code
-HAVING count (*) > 1;
+# Let's create a sample DataFrame
+df = pd.DataFrame({
+    'customer_numbers': [583847, 274858, 485848, 627482, 382927, 728372, 282837, 827383, 273837, 283738]
+})
+
+# Define a function to split a list into chunks
+def chunker(seq, size):
+    return (seq[pos:pos + size] for pos in range(0, len(seq), size))
+
+# Convert the DataFrame column to a list
+customer_numbers = df['customer_numbers'].tolist()
+
+# Split the list into chunks of 3
+chunks = list(chunker(customer_numbers, 3))
+
+# Convert each chunk to a string
+strings = [', '.join(map(str, chunk)) for chunk in chunks]
+
+strings
+
