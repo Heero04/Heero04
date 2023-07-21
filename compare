@@ -24,15 +24,13 @@ def compare_and_diff_primary_keys(df1, df2, key_column):
 
 
 
+output = []
+
 for s in strings:
-    # Split the string into individual numbers
-    numbers = s.split(', ')
+    # Enclose the entire string in parentheses
+    s_with_parentheses = f'({s})'
     
-    # Add parentheses around each number
-    numbers_with_parentheses = [f'({number})' for number in numbers]
-    
-    # Join the numbers back into a string
-    s_with_parentheses = ', '.join(numbers_with_parentheses)
-    
-    # Print the string with quotation marks around it
-    print(f'\'{s_with_parentheses}\',')
+    # Add the string to the output list with quotation marks around it
+    output.append(f'\'{s_with_parentheses}\',')
+
+print(output)
