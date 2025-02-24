@@ -1,6 +1,6 @@
 - 👋 Hi, I’m Lawrence Davis
-- 👀 I’m interested in Data Analytics
-- 🌱 I’m currently learning Excel SQL, Tableau, and Python
+- 👀 I’m interested in Cloud Engineer
+- 🌱 I’m currently learning AWS SQL, Terraform, and Python
 - 📫 How to reach me lawrencedavis1010@gmail.com
 
 <!---
